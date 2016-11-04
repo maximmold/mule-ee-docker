@@ -36,15 +36,6 @@ docker run -d --name mule382 -p 8081:8081 -v ~/mule/apps:/opt/mule/apps -v ~/mul
 | 8081 | Default port for HTTP inbound endpoints                        |
 
 
-## Providing a license file
-*STATUS: TO BE COMPLETED (not yet functional)*
-
-This is optional. By default, a 30-day trial period will start after first run.
-* Provide the Enterprise license file (mule-ee-license.lic in the same folder as the Dockerfile.
-* Build and tag the Docker base image: `docker build --tag="mule-ee"`
-* Run the image: `docker run -t -i --name mule382 -p 8081:8081 -v ~/mule/apps:/opt/mule/apps -v ~/mule/logs:/opt/mule/logs mule-ee`
-
-
 ## Setting up a cluster
 
 It is possible to easily set up a cluster with 2 nodes using Docker Compose:
