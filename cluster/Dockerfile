@@ -1,4 +1,4 @@
-FROM rprins/mule-ee-docker
+FROM rprins/mule-ee
 
 MAINTAINER rajprins@gmail.com
 
