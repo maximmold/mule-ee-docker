@@ -15,7 +15,7 @@ VOLUME      ["/opt/mule/logs", "/opt/mule/apps", "/opt/mule/domains"]
 WORKDIR     /opt/mule
 
 # Mule remote debugger
-EXPOSE 5000
+EXPOSE 5005
 # Mule JMX port (must match Mule config file)
 EXPOSE 1098
 # Mule MMC agent port
