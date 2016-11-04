@@ -17,7 +17,7 @@ Example of a Mule runtime using HTTP port 8081 and the following folder mappings
 
 Now run the following command:
 ```
-docker run -d --name mule382 -p 8081:8081 -v ~/mule/apps:/opt/mule/apps -v ~/mule/logs:/opt/mule/logs rprins/mule-ee-docker
+docker run -d --name mule382 -p 8081:8081 -v ~/mule/apps:/opt/mule/apps -v ~/mule/logs:/opt/mule/logs rprins/mule-ee
 ```
 
 #### Important Mule folders
@@ -33,11 +33,11 @@ docker run -d --name mule382 -p 8081:8081 -v ~/mule/apps:/opt/mule/apps -v ~/mul
 
 | Port | Description                                                    |
 |----- |----------------------------------------------------------------|
-| 8081 | Default HTTP port                                              |
+| 8081 | Default port for HTTP inbound endpoints                        |
 
 
 ## Providing a license file
-*STATUS: TO BE COMPLETED*
+*STATUS: TO BE COMPLETED (not yet functional)*
 
 This is optional. By default, a 30-day trial period will start after first run.
 * Provide the Enterprise license file (mule-ee-license.lic in the same folder as the Dockerfile.
