@@ -1,13 +1,11 @@
 
-# Mule EE runtime Dockerfile
-
-Docker Image packaging for [Mule EE runtime engine](https://www.mulesoft.com/platform/mule).
+# Docker Image packaging for [Mule](https://www.mulesoft.com/platform/mule)  EE runtime engine
 
 ##### Note: This image uses the 30-day trial version of the Mule runtime.
 
 
 ### Usage
-Example of a Mule runtime using HTTP port 8081 :
+Example of starting the container with Mule EE runtime, using HTTP port 8081 and mapped mount points:
 
 ```
 docker run -d --name mule382 -p 8081:8081 -v ~/mule/apps:/opt/mule/apps -v ~/mule/logs:/opt/mule/logs rprins/mule-ee
@@ -25,6 +23,20 @@ docker run -d --name mule382 -p 8081:8081 -v ~/mule/apps:/opt/mule/apps -v ~/mul
 | Port | Description                                                    |
 |----- |----------------------------------------------------------------|
 | 8081 | Default port for HTTP inbound endpoints                        |
+
+
+## Deploying applications
+The simplest way of deploying Mule applications is to copy a deployable archive (.zip file, created with Anypoint Studio or Maven) to the mapped ~/mule/apps folder.
+
+Alternatively, you can install the Mule Agent and register your Mule runtime with the Anypoint Runtime Manager. Details can be found [here](https://docs.mulesoft.com/runtime-manager/managing-servers#add-a-server). Now you can use the Anypoint Runtime Manager to deploy and monitor Mule applications.
+
+
+## Connecting to a running container
+To connect to a running container, you can open a Bash shell
+* First, retrieve the container's ID: `docker ps`
+* Check the CONTAINER_ID column of the output
+* Open a Bash shell on the container: `docker exec -t -i <CONTAINER_ID> /bin/bash`
+
 
 
 ## Running multiple instances
