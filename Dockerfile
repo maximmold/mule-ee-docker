@@ -1,0 +1,33 @@
+FROM java:openjdk-8-jdk
+
+MAINTAINER rajprins@gmail.com
+
+RUN         cd /opt && wget http://s3.amazonaws.com/new-mule-artifacts/mule-ee-distribution-standalone-3.8.2.tar.gz
+RUN         cd /opt && tar xvzf mule-ee-distribution-standalone-3.8.2.tar.gz && rm mule-ee-distribution-standalone-3.8.2.tar.gz && ln -s /opt/mule-enterprise-standalone-3.8.2 /opt/mule
+
+
+# Define environment variables.
+ENV         MULE_HOME /opt/mule
+
+# Define mount points.
+VOLUME      ["/opt/mule/logs", "/opt/mule/apps", "/opt/mule/domains"]
+
+# Define working directory.
+WORKDIR     /opt/mule
+
+# Copy and install license file
+# ADD  ./mule-ee-license.lic ${MULE_HOME}/conf/
+# RUN  bin/mule -installLicense conf/mule-ee-license.lic; fi
+
+
+# Mule remote debugger
+EXPOSE 5000
+# Mule JMX port (must match Mule config file)
+EXPOSE 1098
+# Mule MMC agent port
+EXPOSE 7777
+# Default http port
+EXPOSE 8081
+
+# Start Mule runtime
+CMD [ "/opt/mule/bin/mule" ]
