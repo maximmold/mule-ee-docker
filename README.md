@@ -49,11 +49,11 @@ Example:
 
 
 ## Setting up a cluster
-It is possible to easily set up a cluster with 2 nodes using Docker Compose:
-* Clone repository from [this GitHub location](https://github.com/rajprins/mule-ee-docker)
-* Navigate to folder `cluster`
+It is possible to set up a cluster with 2 nodes using Docker Compose:
+* Clone [this](https://github.com/rajprins/mule-ee-docker) GitHub repository: `git clone https://github.com/rajprins/mule-ee-lic-docker.git`
+* From the location where you cloned the GitHub repo files, navigate to folder `cluster`
 * To launch the cluster and see logs in console, run `docker-compose up`
-* To launch the cluster in detached mode, run `docker-compose up -d`
+
 
 
 This will launch two containers, both with a Mule EE runtime, configured to run in a multicast-enabled cluster.
