@@ -61,8 +61,8 @@ It is recommended to run the containers in detached mode (using the -d option).
 Example:
 
 ```
-$ docker run -d --name="mule01" -p 8081:8081 -v ~/mule/mule01/apps:/opt/mule/apps -v ~/mule/mule01/logs:/opt/mule/logs rprins/mule-ee
-$ docker run -d --name="mule02" -p 9081:8081 -v ~/mule/mule02/apps:/opt/mule/apps -v ~/mule/mule02/logs:/opt/mule/logs rprins/mule-ee
+$ docker run -d --name="mule01" -p 8081:8081 -v ~/mule/mule01/apps:/opt/mule/apps -v ~/mule/mule01/logs:/opt/mule/logs mule-ee
+$ docker run -d --name="mule02" -p 9081:8081 -v ~/mule/mule02/apps:/opt/mule/apps -v ~/mule/mule02/logs:/opt/mule/logs mule-ee
 ```
 
 
