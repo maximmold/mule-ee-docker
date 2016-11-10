@@ -16,10 +16,16 @@ WORKDIR     /opt/mule
 
 # Mule remote debugger
 EXPOSE 5005
+
 # Mule JMX port (must match Mule config file)
 EXPOSE 1098
+
 # Mule MMC agent port
 EXPOSE 7777
+
+# Mule agent port
+EXPOSE 9997
+
 # Default http port
 EXPOSE 8081
 
