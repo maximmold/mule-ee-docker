@@ -15,7 +15,7 @@ VOLUME ["/opt/mule/logs", "/opt/mule/apps", "/opt/mule/domains"]
 WORKDIR /opt/mule
 
 # Apply patch for issue se-4497
-ADD ./se-4497-3.8.1 ${MULE_HOME}/lib/user
+ADD ./se-4497-3.8.1.jar ${MULE_HOME}/lib/user
 
 # Mule remote debugger
 EXPOSE 5005
