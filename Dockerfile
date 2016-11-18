@@ -2,17 +2,20 @@ FROM java:openjdk-8-jdk
 
 MAINTAINER rajprins@gmail.com
 
-RUN         cd /opt && wget http://s3.amazonaws.com/new-mule-artifacts/mule-ee-distribution-standalone-3.8.2.tar.gz
-RUN         cd /opt && tar xvzf mule-ee-distribution-standalone-3.8.2.tar.gz && rm mule-ee-distribution-standalone-3.8.2.tar.gz && ln -s /opt/mule-enterprise-standalone-3.8.2 /opt/mule
+RUN cd /opt && wget http://s3.amazonaws.com/new-mule-artifacts/mule-ee-distribution-standalone-3.8.2.tar.gz
+RUN cd /opt && tar xvzf mule-ee-distribution-standalone-3.8.2.tar.gz && rm mule-ee-distribution-standalone-3.8.2.tar.gz && ln -s /opt/mule-enterprise-standalone-3.8.2 /opt/mule
 
 # Define environment variables.
-ENV         MULE_HOME /opt/mule
+ENV MULE_HOME /opt/mule
 
 # Define mount points.
-VOLUME      ["/opt/mule/logs", "/opt/mule/apps", "/opt/mule/domains"]
+VOLUME ["/opt/mule/logs", "/opt/mule/apps", "/opt/mule/domains"]
 
 # Define working directory.
-WORKDIR     /opt/mule
+WORKDIR /opt/mule
+
+# Apply patch for issue se-4497
+ADD ./se-4497-3.8.1 ${MULE_HOME}/lib/user
 
 # Mule remote debugger
 EXPOSE 5005
