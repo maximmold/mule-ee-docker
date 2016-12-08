@@ -25,7 +25,6 @@ $ docker run -d --name="mule-ee" -p 8081:8081 -v ~/mule/apps:/opt/mule/apps -v ~
 | Location          | Description                            | Local folder mapping |
 |------------------ |----------------------------------------|----------------------|
 |/opt/mule/apps     | Mule Application deployment directory  | ~/mule/apps          |
-|/opt/mule/domains  | Mule Domains deployment directory      | |
 |/opt/mule/logs     | Logs directory                         | ~/mule/logs          |
 
 

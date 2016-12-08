@@ -2,8 +2,10 @@ FROM java:openjdk-8-jdk
 
 MAINTAINER rajprins@gmail.com
 
-RUN cd /opt && wget http://s3.amazonaws.com/new-mule-artifacts/mule-ee-distribution-standalone-3.8.3.tar.gz
-RUN cd /opt && tar xvzf mule-ee-distribution-standalone-3.8.3.tar.gz && rm mule-ee-distribution-standalone-3.8.3.tar.gz && ln -s /opt/mule-enterprise-standalone-3.8.3 /opt/mule
+ENV version "3.8.3"
+
+RUN cd /opt && wget http://s3.amazonaws.com/new-mule-artifacts/mule-ee-distribution-standalone-${version}.tar.gz
+RUN cd /opt && tar xvzf mule-ee-distribution-standalone-${version}.tar.gz && rm mule-ee-distribution-standalone-${version}.tar.gz && ln -s /opt/mule-enterprise-standalone-${version} /opt/mule
 
 # Define environment variables.
 ENV MULE_HOME /opt/mule
