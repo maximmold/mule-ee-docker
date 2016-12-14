@@ -1,11 +1,14 @@
 FROM java:openjdk-8-jdk
 
-MAINTAINER rajprins@gmail.com
+MAINTAINER Roy Prins <rajprins@gmail.com>
 
-ENV version "3.8.3"
+ENV RUNTIME_VERSION "3.8.3"
 
-RUN cd /opt && wget http://s3.amazonaws.com/new-mule-artifacts/mule-ee-distribution-standalone-${version}.tar.gz
-RUN cd /opt && tar xvzf mule-ee-distribution-standalone-${version}.tar.gz && rm mule-ee-distribution-standalone-${version}.tar.gz && ln -s /opt/mule-enterprise-standalone-${version} /opt/mule
+WORKDIR /opt
+RUN wget https://s3.amazonaws.com/new-mule-artifacts/mule-ee-distribution-standalone-${RUNTIME_VERSION}.zip
+RUN unzip mule-ee-distribution-standalone-${RUNTIME_VERSION}.zip
+RUN rm mule-ee-distribution-standalone-${RUNTIME_VERSION}.zip
+RUN ln -s /opt/mule-enterprise-standalone-${RUNTIME_VERSION} /opt/mule
 
 # Define environment variables.
 ENV MULE_HOME /opt/mule
@@ -32,4 +35,4 @@ EXPOSE 9997
 EXPOSE 8081
 
 # Start Mule runtime
-CMD [ "/opt/mule/bin/mule" ]
+CMD /opt/mule/bin/mule

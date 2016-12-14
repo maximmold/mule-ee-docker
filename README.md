@@ -1,6 +1,8 @@
 
 # Docker Image packaging for [Mule](https://www.mulesoft.com/platform/mule)  EE runtime engine
 
+[![](https://images.microbadger.com/badges/image/rprins/mule-ee.svg)](https://microbadger.com/images/rprins/mule-ee "Get your own image badge on microbadger.com")
+
 ##### Note: This image uses the 30-day trial version of the Mule runtime.
 
 
