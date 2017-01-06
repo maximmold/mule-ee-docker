@@ -1,30 +1,27 @@
-FROM azul/zulu-openjdk
-MAINTAINER Roy Prins <rajprins@gmail.com>
+FROM         azul/zulu-openjdk
+MAINTAINER   Roy Prins <rajprins@gmail.com>
 
-ENV RUNTIME_VERSION "3.8.3"
+# Define environment variables
+ENV         RUNTIME_VERSION "3.8.3"
+ENV         MULE_HOME /opt/mule
 
-RUN apt-get update && \
-    apt-get install -y wget unzip && \
-    rm -rf /var/lib/apt/lists/*
+# Install necessary system tools
+RUN         apt-get update && \
+            apt-get install -y wget unzip && \
+            rm -rf /var/lib/apt/lists/*
 
-WORKDIR /opt
+# Download and install Mule runtime
+WORKDIR     /opt
+RUN         wget https://s3.amazonaws.com/new-mule-artifacts/mule-ee-distribution-standalone-${RUNTIME_VERSION}.zip && \
+            unzip mule-ee-distribution-standalone-${RUNTIME_VERSION}.zip && \
+            rm mule-ee-distribution-standalone-${RUNTIME_VERSION}.zip && \
+            ln -s /opt/mule-enterprise-standalone-${RUNTIME_VERSION} /opt/mule
 
-RUN wget https://s3.amazonaws.com/new-mule-artifacts/mule-ee-distribution-standalone-${RUNTIME_VERSION}.zip && \
-    unzip mule-ee-distribution-standalone-${RUNTIME_VERSION}.zip && \
-    rm mule-ee-distribution-standalone-${RUNTIME_VERSION}.zip && \
-    ln -s /opt/mule-enterprise-standalone-${RUNTIME_VERSION} /opt/mule
-
-# Define environment variables.
-ENV MULE_HOME /opt/mule
-
-# Define mount points.
-VOLUME ["/opt/mule/logs", "/opt/mule/apps", "/opt/mule/domains"]
-
-# Define working directory.
-WORKDIR /opt/mule
+# Define mount points
+VOLUME      ["/opt/mule/logs", "/opt/mule/apps", "/opt/mule/domains"]
 
 # Remote debugger, JMX port, MMC agent, agent, default HTTP port
-EXPOSE 5005 1098 7777 9997 8081
+EXPOSE      5005 1098 7777 9997 8081
 
 # Start Mule runtime
-CMD ["/opt/mule/bin/mule"]
+CMD         ["/opt/mule/bin/mule"]
