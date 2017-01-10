@@ -20,6 +20,9 @@ RUN         wget https://s3.amazonaws.com/new-mule-artifacts/mule-ee-distributio
 # Define mount points
 VOLUME      ["/opt/mule/logs", "/opt/mule/apps", "/opt/mule/domains"]
 
+# Apply patch for issue se-4497
+COPY        ./resources/se-4497-3.8.1.jar ${MULE_HOME}/lib/user
+
 # Remote debugger, JMX port, MMC agent, agent, default HTTP port
 EXPOSE      5005 1098 7777 9997 8081
 

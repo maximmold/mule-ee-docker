@@ -2,9 +2,9 @@
 
 echo
 tput rev
-echo "┌─────────────────────────────────────────────────────────────────────────┐"
-echo "│            M U L E   D O C K E R    I M A G E    R U N N E R            │"
-echo "└─────────────────────────────────────────────────────────────────────────┘"
+echo "┌──────────────────────────────────────────────────────────────────────────┐"
+echo "│            M U L E    D O C K E R    I M A G E    R U N N E R            │"
+echo "└──────────────────────────────────────────────────────────────────────────┘"
 tput sgr0
 
 echo
@@ -18,7 +18,7 @@ echo "Container name: $NAME"
 
 echo
 echo -n "Enter a port number for the default HTTP connector port 8081 (default: 8081): "
-read PORT 
+read PORT
 if [[ -z $PORT ]] ; then
    PORT="8081"
 fi
@@ -32,7 +32,7 @@ if [[ -z $MODE ]] ; then
 fi
 
 MULE_BASE="$HOME/mule/$NAME"
-RUN_CMD="docker run -t -i --name=${NAME} -p $PORT:8081 -v $MULE_BASE/apps:/opt/mule/apps -v $MULE_BASE/logs:/opt/mule/logs -v ${NAME}"
+RUN_CMD="docker run -t -i --name=${NAME} -p $PORT:8081 -v $MULE_BASE/apps:/opt/mule/apps -v $MULE_BASE/domains:/opt/mule/domains -v $MULE_BASE/logs:/opt/mule/logs -v ${NAME}"
 
 
 if [ $MODE = "T" ] || [ $MODE = "t" ] ; then
@@ -45,4 +45,3 @@ else
    echo "Wrong input: $MODE. Expected 'T' or 'D'. Aborting..."
    exit 1
 fi
-
