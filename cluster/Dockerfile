@@ -1,4 +1,4 @@
-FROM        rprins/mule-ee
+FROM        mule-ee
 
 MAINTAINER  rajprins@gmail.com
 

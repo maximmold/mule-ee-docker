@@ -3,8 +3,11 @@
 echo
 tput rev
 echo "┌──────────────────────────────────────────────────────────────────────────┐"
-echo "│            M U L E    D O C K E R    I M A G E    R U N N E R            │"
+echo "│ (\_/)      M U L E    D O C K E R    I M A G E    R U N N E R            │"
+echo "│ /   \                                                                    |"
 echo "└──────────────────────────────────────────────────────────────────────────┘"
+
+
 tput sgr0
 
 echo
@@ -17,10 +20,10 @@ echo "Container name: $NAME"
 
 
 echo
-echo -n "Enter a port number for the default HTTP connector port 8081 (default: 8081): "
+echo -n "Enter a port number for the default HTTP connector port (default: 8085): "
 read PORT
 if [[ -z $PORT ]] ; then
-   PORT="8081"
+   PORT="8085"
 fi
 echo "Port: $PORT"
 
@@ -32,15 +35,15 @@ if [[ -z $MODE ]] ; then
 fi
 
 MULE_BASE="$HOME/mule/$NAME"
-RUN_CMD="docker run -t -i --name=${NAME} -p $PORT:8081 -v $MULE_BASE/apps:/opt/mule/apps -v $MULE_BASE/domains:/opt/mule/domains -v $MULE_BASE/logs:/opt/mule/logs -v ${NAME}"
+RUN_CMD="docker run -ti --name ${NAME} -p $PORT:8081 -v $MULE_BASE/apps:/opt/mule/apps -v $MULE_BASE/domains:/opt/mule/domains -v $MULE_BASE/logs:/opt/mule/logs -v ${NAME}"
 
 
 if [ $MODE = "T" ] || [ $MODE = "t" ] ; then
    echo "Starting container $NAME with terminal output enabled. Data volume mounted on $MULE_BASE."
-   docker run -t -i --name=$NAME -p 8081:8081 -v $MULE_BASE/apps:/opt/mule/apps -v $MULE_BASE/logs:/opt/mule/logs $NAME
+   docker run -ti --name $NAME -p 8085:8081 -v $MULE_BASE/apps:/opt/mule/apps -v $MULE_BASE/logs:/opt/mule/logs $NAME
 elif [ $MODE = "D" ] || [ $MODE = "d" ] ; then
    echo "Starting container $NAME in detached mode. Data volume mounted on $HOME/mule/$NAME."
-   docker run -d --name=$NAME -p 8081:8081 -v $MULE_BASE/apps:/opt/mule/apps -v $MULE_BASE/logs:/opt/mule/logs $NAME
+   docker run -d --name $NAME -p 8085:8081 -v $MULE_BASE/apps:/opt/mule/apps -v $MULE_BASE/logs:/opt/mule/logs $NAME
 else
    echo "Wrong input: $MODE. Expected 'T' or 'D'. Aborting..."
    exit 1
