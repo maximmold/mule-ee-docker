@@ -2,7 +2,7 @@ FROM         azul/zulu-openjdk
 MAINTAINER   Roy Prins <rajprins@gmail.com>
 
 # Define environment variables
-ARG         RUNTIME_VERSION=3.8.4
+ARG         RUNTIME_VERSION=3.8.5
 ENV         RUNTIME_VERSION $RUNTIME_VERSION
 ENV         MULE_HOME /opt/mule
 
@@ -46,4 +46,3 @@ EXPOSE      9997
 # Start Mule runtime
 WORKDIR     /opt/mule
 CMD         ["/opt/mule/bin/mule"]
-
