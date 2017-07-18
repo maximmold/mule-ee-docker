@@ -3,6 +3,7 @@ MAINTAINER   Roy Prins <rajprins@gmail.com>
 
 # Define environment variables
 ARG         RUNTIME_VERSION
+ENV         RUNTIME_VERSION $RUNTIME_VERSION
 ENV         MULE_HOME /opt/mule
 
 # Install necessary system tools
