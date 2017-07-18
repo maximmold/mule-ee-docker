@@ -21,9 +21,6 @@ RUN         wget https://s3.amazonaws.com/new-mule-artifacts/mule-ee-distributio
 # Define mount points
 VOLUME      ["/opt/mule/logs", "/opt/mule/apps", "/opt/mule/domains"]
 
-# Apply patch for issue se-4497
-COPY        ./resources/SE-4497-3.8.3.jar ${MULE_HOME}/lib/user
-
 # Register Mule runtime to Anypoint Runtime Manager user agent
 # RUN        /opt/mule/bin/amc_setup -H 9abf2e19-a7ef-4564-9f07-d112af014267---805 mule-ee
 
