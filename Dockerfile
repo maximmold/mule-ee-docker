@@ -2,7 +2,11 @@ FROM         azul/zulu-openjdk
 MAINTAINER   Roy Prins <rajprins@gmail.com>
 
 # Define environment variables
+<<<<<<< HEAD
 ARG         RUNTIME_VERSION=3.8.5
+=======
+ARG         RUNTIME_VERSION
+>>>>>>> ba9ad5ce24d81c4d8f6dee7b4a60a690faf302a4
 ENV         RUNTIME_VERSION $RUNTIME_VERSION
 ENV         MULE_HOME /opt/mule
 
