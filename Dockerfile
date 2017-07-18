@@ -2,8 +2,7 @@ FROM         azul/zulu-openjdk
 MAINTAINER   Roy Prins <rajprins@gmail.com>
 
 # Define environment variables
-ARG         RUNTIME_VERSION=3.8.5
-ENV         RUNTIME_VERSION $RUNTIME_VERSION
+ARG         RUNTIME_VERSION
 ENV         MULE_HOME /opt/mule
 
 # Install necessary system tools
@@ -21,8 +20,8 @@ RUN         wget https://s3.amazonaws.com/new-mule-artifacts/mule-ee-distributio
 # Define mount points
 VOLUME      ["/opt/mule/logs", "/opt/mule/apps", "/opt/mule/domains"]
 
-# Register Mule runtime to Anypoint Runtime Manager user agent
-# RUN        /opt/mule/bin/amc_setup -H 9abf2e19-a7ef-4564-9f07-d112af014267---805 mule-ee
+# Copy configuration files
+COPY        ./resources/wrapper.conf ${MULE_HOME}/conf/
 
 # HTTP Service Port
 # Expose the necessary port ranges as required by the Mule Apps
