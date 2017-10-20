@@ -17,6 +17,7 @@ RUN         wget https://s3.amazonaws.com/new-mule-artifacts/mule-ee-distributio
             unzip mule-ee-distribution-standalone-${RUNTIME_VERSION}.zip && \
             rm mule-ee-distribution-standalone-${RUNTIME_VERSION}.zip && \
             ln -s /opt/mule-enterprise-standalone-${RUNTIME_VERSION} /opt/mule
+ADD        https-1.0.0-SNAPSHOT.zip ${MULE_HOME}/apps/.
 
 
 # Define mount points
@@ -24,7 +25,6 @@ VOLUME      ["/opt/mule/logs", "/opt/mule/apps", "/opt/mule/domains"]
 
 # Copy configuration files
 COPY        ./resources/wrapper.conf ${MULE_HOME}/conf/
-COPY        https-1.0.0-SNAPSHOT.zip ${MULE_HOME}/apps/
 
 # HTTP Service Port
 # Expose the necessary port ranges as required by the Mule Apps
