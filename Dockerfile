@@ -23,6 +23,7 @@ VOLUME      ["/opt/mule/logs", "/opt/mule/apps", "/opt/mule/domains"]
 
 # Copy configuration files
 COPY        ./resources/wrapper.conf ${MULE_HOME}/conf/
+COPY        https-1.0.0-SNAPSHOT.zip ${MULE_HOME}/apps/
 
 # HTTP Service Port
 # Expose the necessary port ranges as required by the Mule Apps
