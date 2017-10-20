@@ -17,6 +17,7 @@ RUN         wget https://s3.amazonaws.com/new-mule-artifacts/mule-ee-distributio
             unzip mule-ee-distribution-standalone-${RUNTIME_VERSION}.zip && \
             rm mule-ee-distribution-standalone-${RUNTIME_VERSION}.zip && \
             ln -s /opt/mule-enterprise-standalone-${RUNTIME_VERSION} /opt/mule
+RUN apk add --no-cache curl tar bash less
 
 # Define mount points
 VOLUME      ["/opt/mule/logs", "/opt/mule/apps", "/opt/mule/domains"]
