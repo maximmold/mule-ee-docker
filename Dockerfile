@@ -32,10 +32,12 @@ RUN rm -rf /opt/mule/logs
 RUN rm -rf /opt/mule/apps
 RUN rm -rf /opt/mule/domains
 RUN rm -rf /opt/mule/conf
+RUN rm -rf /opt/mule/plugins
 RUN ln -s /opt/mule-volume/logs /opt/mule
 RUN ln -s /opt/mule-volume/apps /opt/mule
 RUN ln -s /opt/mule-volume/domains /opt/mule
 RUN ln -s /opt/mule-volume/conf /opt/mule
+RUN ln -s /opt/mule-volume/plugins /opt/mule
  
 #VOLUME      ["/opt/mule/logs", "/opt/mule/apps", "/opt/mule/domains", "/opt/mule/conf"]
 
