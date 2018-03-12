@@ -44,8 +44,8 @@ RUN ln -s /opt/mule-volume/conf /opt/mule
 
 # HTTP Service Port
 # Expose the necessary port ranges as required by the Mule Apps
-EXPOSE      8081-8082
-
+EXPOSE      8081
+EXPOSE      8082
 # Mule remote debugger
 EXPOSE      5000
 
